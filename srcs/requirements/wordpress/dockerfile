@@ -1,0 +1,22 @@
+FROM alpine:3.16
+
+RUN		apk update && \
+		apk add --no-cache wget \
+		php-openssl \
+		php-phar \
+		php-fpm \
+		php \
+		mariadb-client \
+		php-pdo_mysql \
+		php-mysqli \
+		php-mbstring
+
+RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN		chmod +x wp-cli.phar
+RUN		mv wp-cli.phar /usr/local/bin/wp;
+RUN		mkdir -p /var/www/html
+COPY	conf/configure.sh /temp/configure.sh
+
+WORKDIR	/var/www/html/wordpress
+
+ENTRYPOINT [ "sh", "/temp/configure.sh"]

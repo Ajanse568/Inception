@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+    nginx:
+        build: requirements/nginx/
+        container_name: nginx
+        ports:
+          - "443:443"
+        volumes:
+          - ./data/wordpress:/var/www/html
+    wordpress:
+        build: requirements/wordpress/
+        container_name: wordpress
+        depends_on: 
+          - mariadb
+        volumes:
+          - ./data/wordpress:/var/www/html
+        env_file: .env
+    mariadb:
+        build: requirements/mariadb
+        container_name: mariadb
+        volumes:
+          - ./data/mariadb:/var/www/html
+        environment:
+          MYSQL_ROOT_PWD:   ${MYSQL_ROOT_PWD}
+          WP_DATABASE_NAME: ${WP_DATABASE_NAME}
+          WP_DATABASE_USR:  ${WP_DATABASE_USR}
+          WP_DATABASE_PWD:  ${WP_DATABASE_PWD}

@@ -21,5 +21,5 @@ kill "$MARIADB_PID"
 wait "$MARIADB_PID"
 sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
 sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf
-rm /tmp/create_db.sql /tmp/configure.sh
+# rm /tmp/create_db.sql /tmp/configure.sh
 exec /usr/bin/mysqld --user=mysql > /dev/null

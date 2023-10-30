@@ -6,7 +6,7 @@ services:
         image: nginx
         container_name: nginx
         ports:
-          - "8000:443"
+          - "443:443"
         volumes:
           - ${HOME_FOLDER}/data/wordpress:/var/www/html
     wordpress:

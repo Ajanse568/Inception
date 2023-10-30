@@ -1,17 +1,14 @@
 NAME = inception
 
-all: prune up
+all: up
 
-up:
-	@ docker-compose -f src/docker-compose.yml up --build
+up:	down
+	@ docker compose -f srcs/docker-compose.yml up
 
-prune: clean
-	@ docker system prune -f
-
-clean: down
-	@ rm -rf ./data/
+prune:
+	@ docker system prune -a -f
 
 down:
-	@ docker-compose -f srcs/docker-compose.yml down
+	@ docker compose -f srcs/docker-compose.yml down
 
-.PHONY: down clean prune up all
+.PHONY: down clean prune

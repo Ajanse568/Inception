@@ -6,9 +6,8 @@ RUN apk update && apk upgrade && apk add --no-cache \
 RUN mkdir -p /run/mysqld
 RUN chown -R mysql:mysql /run/mysqld
 RUN chmod 777 /run/mysqld
-RUN mysql_install_db --basedir=/usr --datadir=/var/lib/mysql \
---user=mysql --skip-test-db > /dev/null
 
 COPY conf/configure.sh /tmp/configure.sh
+COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 ENTRYPOINT [ "sh", "/tmp/configure.sh" ]

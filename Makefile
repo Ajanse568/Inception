@@ -3,9 +3,9 @@ NAME = inception
 all: up
 
 up:	down
-	@ mkdir ~/data
-	@ mkdir ~/data/mariadb
-	@ mkdir ~/data/wordpres
+	@ mkdir -m777 ~/data
+	@ mkdir -m777 ~/data/mariadb
+	@ mkdir -m777 ~/data/wordpres
 	@ docker compose -f srcs/docker-compose.yml up --build
 
 prune:

@@ -1,5 +1,7 @@
 version: "3.8"
 
+name: inception_compose
+
 services:
     nginx:
         build: requirements/nginx/

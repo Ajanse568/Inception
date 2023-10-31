@@ -5,7 +5,7 @@ all: up
 up:	down
 	@ mkdir -m777 -p ~/data
 	@ mkdir -m777 -p ~/data/mariadb
-	@ mkdir -m777 -p ~/data/wordpres
+	@ mkdir -m777 -p ~/data/wordpress
 	@ docker compose -f srcs/docker-compose.yml up --build
 
 prune:

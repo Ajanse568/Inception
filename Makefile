@@ -3,7 +3,7 @@ NAME = inception
 all: up
 
 up:	down
-	@ docker compose -f srcs/docker-compose.yml up
+	@ docker compose -f srcs/docker-compose.yml up --build
 
 prune:
 	@ docker system prune -a -f

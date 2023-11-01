@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.18.3
 
 RUN		apk update && \
 		apk add --no-cache wget \
@@ -16,7 +16,7 @@ RUN		chmod +x wp-cli.phar
 RUN		mv wp-cli.phar /usr/local/bin/wp;
 RUN		mkdir -p /var/www/html
 COPY	conf/configure.sh /temp/configure.sh
-COPY 	conf/www.conf /etc/php8/php-fpm.d/www.conf
+COPY 	conf/www.conf /etc/php81/php-fpm.d/www.conf
 
 WORKDIR	/var/www/html/
 

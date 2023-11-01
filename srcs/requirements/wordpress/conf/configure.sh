@@ -15,4 +15,4 @@ else
     wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
 fi
 
-exec php-fpm8 --nodaemonize
+exec php-fpm81 --nodaemonize
